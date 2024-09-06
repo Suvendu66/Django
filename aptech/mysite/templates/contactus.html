@@ -1,0 +1,61 @@
+
+{% extends "index.html" %}
+{% block content  %}
+<h1 style="margin-left:37%;">Contact Us Page</h1>
+
+
+<h1 style="margin-left:10%;"> Add Contact </h1>
+<form action="savecontact" method="post" style="margin-left:2%" >
+   {% csrf_token %}
+   <div class="row">
+       <div class="form-group col-md-2">
+           <label for="formGroupExampleInput">Enter ID</label>
+           <input type='text' name="id" class="form-control" placeholder="Enter ID"  value=""> 
+       </div> 
+       <div class="form-group col-md-2"> 
+           <label for="formGroupExampleInput2">Enter Name</label>  
+           <input type='text' name="name" class="form-control" placeholder="Enter Name"  value=""> 
+       </div>
+   </div> 
+   <div class="row">        
+       <div class="form-group col-md-2">  
+           <label for="formGroupExampleInput3">Enter Email</label> 
+           <input type='email' name="email" class="form-control" placeholder="Enter Email"  value=""> 
+       </div>     
+       <div class="form-group col-md-2">  
+           <label for="formGroupExampleInput4">Enter Age</label>  
+           <input type='text' name="age" class="form-control" placeholder="Enter age"  value=""> 
+       </div> 
+       <div class="col-auto">       
+           <button type="submit" name="submit" class="btn btn-success">Save</button>
+       </div>  
+   </div>   
+       
+</form>
+<hr>
+     <p style="margin-left:1%;">Contact Details, You are at Contact page.</p>
+     
+   <table width="100%" border="1" class="table table-striped">
+        <tr>
+             <th>Sl no</th>
+             <th> ID </th>
+             <th> Name </th>
+             <th> Email </th>
+             <th> Age </th>
+             <th> Action </th>
+        </tr>
+     {% for i in context %}
+        <tr>
+         <td>{{ forloop.counter}}</td>
+         <td> {{i.id}} </td>
+         <td> {{i.name}} </td>
+         <td> {{i.email}} </td>
+         <td> {{i.age}} </td>
+         <td> <a href="details/{{i.id}}" class="btn btn-primary">Edit</a> | <a href="delete/{{i.id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+     {% endfor %}
+   </table>
+
+
+{% endblock content %}
+ 

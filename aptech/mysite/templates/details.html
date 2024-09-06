@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content  %}
+
+   <h1 style="margin-left:25%;">Update Contact</h1>
+     <form action="/updatecontact" method="post" style="margin-left:19%">
+        {% csrf_token %}
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="formGroupExampleInput">Enter ID</label>
+                <input type='text' name="id" class="form-control" placeholder="Enter ID"  value="{{context.id}}"> <br> <br>
+            </div> 
+            <div class="form-group col-md-2"> 
+                <label for="formGroupExampleInput2">Enter Name</label>   
+                <input type='text' name="name" class="form-control" placeholder="Enter Name"  value="{{context.name}}"> <br> <br>
+            </div>
+        </div>
+        <div class="row">         
+            <div class="form-group col-md-2">
+                <label for="formGroupExampleInput3">Enter Email</label>    
+                <input type='email' name="email" class="form-control" placeholder="Enter Email"  value="{{context.email}}"> <br> <br>
+            </div>     
+            <div class="form-group col-md-2"> 
+                <label for="formGroupExampleInput4">Enter Age</label>    
+                <input type='text' name="age" class="form-control" placeholder="Enter age"  value="{{context.age}}"> <br> <br>
+            </div> 
+            <div class="col-auto">       
+                <button type="submit" name="submit" class="btn btn-warning">Update</button>
+            </div>    
+        </div>
+
+     </form>
+{% endblock content %}
